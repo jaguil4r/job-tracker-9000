@@ -27,7 +27,12 @@ That also means GitHub doesn't back up your job list. Copy `applications.json` s
 
 To change the port or the data file, set `TRACKER_PORT` or `TRACKER_DATA` before starting the tracker.
 
+## Job search prompt
+
+[JOB_SEARCH_PROMPT.md](JOB_SEARCH_PROMPT.md) is a prompt for Claude Code that takes you from updating your resume to filling in applications, and uses this tracker to keep track of them.
+
 ## Files
 
 - `tracker.py`: local server and JSON storage
 - `index.html`, `app.js`, `styles.css`: the dashboard
+- `JOB_SEARCH_PROMPT.md`: the Claude Code job search prompt
