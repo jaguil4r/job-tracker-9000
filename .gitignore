@@ -1,0 +1,7 @@
+# Personal job search data stays on your computer
+applications.json
+applications.backup.json
+applications.tmp
+
+__pycache__/
+*.pyc

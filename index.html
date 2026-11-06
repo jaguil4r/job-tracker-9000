@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Tracker</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="top">
+      <div>
+        <h1>Job search</h1>
+        <p class="sub" id="summary">Loading…</p>
+      </div>
+      <button class="btn btn-main" id="add" type="button">Add a job</button>
+    </header>
+
+    <section class="tiles" aria-label="Summary">
+      <div class="tile"><span class="tile-num" id="t-active">–</span><span class="tile-label">Waiting on a reply</span></div>
+      <div class="tile"><span class="tile-num" id="t-talking">–</span><span class="tile-label">In conversation</span></div>
+      <div class="tile"><span class="tile-num" id="t-todo">–</span><span class="tile-label">Still to apply</span></div>
+      <div class="tile"><span class="tile-num" id="t-due">–</span><span class="tile-label">Follow-ups due</span></div>
+    </section>
+
+    <section class="next" id="next-wrap" hidden>
+      <h2>Next steps</h2>
+      <ul id="next"></ul>
+    </section>
+
+    <section class="board">
+      <div class="controls">
+        <div class="filters" id="filters" role="group" aria-label="Filter by status"></div>
+        <label class="search"><span class="sr">Search</span><input id="search" type="search" placeholder="Search"></label>
+      </div>
+      <div id="list" class="list"></div>
+      <p class="empty" id="empty" hidden>Nothing here yet.</p>
+    </section>
+  </main>
+
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <form id="form" method="dialog" novalidate>
+      <header class="dialog-head">
+        <h2 id="dialog-title">Add a job</h2>
+        <button class="icon" id="close" type="button" aria-label="Close">×</button>
+      </header>
+      <div class="fields">
+        <label>Company<input name="company" required maxlength="120"></label>
+        <label>Role<input name="role" required maxlength="160"></label>
+        <label>Status<select name="status" id="status-select"></select></label>
+        <label>Date applied<input name="applied" type="date"></label>
+        <label>Pay<input name="pay" maxlength="80" placeholder="$150K–$180K"></label>
+        <label>Location<input name="location" maxlength="120" placeholder="Remote US"></label>
+        <label class="wide">Job link<input name="url" type="url" maxlength="2000" placeholder="https://"></label>
+        <label>Resume used<input name="resume" maxlength="160"></label>
+        <label>Contact<input name="contact" maxlength="200"></label>
+        <label>Next step<input name="next_step" maxlength="300"></label>
+        <label>Next step date<input name="next_date" type="date"></label>
+        <label class="wide">Notes<textarea name="notes" rows="4" maxlength="4000"></textarea></label>
+      </div>
+      <p class="error" id="form-error" role="alert"></p>
+      <footer class="dialog-foot">
+        <button class="btn btn-danger" id="delete" type="button" hidden>Delete</button>
+        <span class="spacer"></span>
+        <button class="btn" id="cancel" type="button">Cancel</button>
+        <button class="btn btn-main" type="submit">Save</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>
