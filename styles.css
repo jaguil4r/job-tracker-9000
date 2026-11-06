@@ -101,6 +101,7 @@ h1 { color: var(--ink); font-size: 1.75rem; font-weight: 600; letter-spacing: -0
 .row:hover { border-color: var(--line-2); }
 .row.closed { opacity: 0.62; }
 .co { color: var(--ink); font-weight: 600; letter-spacing: -0.01em; }
+.rank { margin-right: 0.375rem; color: var(--accent); font-variant-numeric: tabular-nums; }
 .co a { text-decoration: none; }
 .co a:hover { text-decoration: underline; }
 .role { font-size: 0.875rem; }

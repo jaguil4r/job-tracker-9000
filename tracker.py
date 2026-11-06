@@ -88,6 +88,20 @@ def clean(raw):
         if parsed.scheme not in ("http", "https") or not parsed.netloc:
             raise ValueError("Link must start with http:// or https://")
     item["url"] = url
+
+    rank = raw.get("rank", "")
+    if rank in ("", None):
+        item["rank"] = None
+    else:
+        if isinstance(rank, (bool, float)):
+            raise ValueError("Priority must be a whole number")
+        try:
+            rank = int(rank)
+        except (TypeError, ValueError):
+            raise ValueError("Priority must be a whole number") from None
+        if not 1 <= rank <= 9999:
+            raise ValueError("Priority must be between 1 and 9999")
+        item["rank"] = rank
     return item
 
 

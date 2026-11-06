@@ -62,6 +62,10 @@
     return item.next_date && item.next_date <= today() && CLOSED.indexOf(item.status) === -1;
   }
 
+  function rankOf(item) {
+    return item.status === 'Interested' && item.rank ? item.rank : Infinity;
+  }
+
   function visible() {
     var query = state.query.toLowerCase();
     return state.items
@@ -72,7 +76,7 @@
           .join(' ').toLowerCase().indexOf(query) !== -1;
       })
       .sort(function (a, b) {
-        return (ORDER[a.status] - ORDER[b.status]) || (b.applied || '').localeCompare(a.applied || '') || a.company.localeCompare(b.company);
+        return (ORDER[a.status] - ORDER[b.status]) || (rankOf(a) - rankOf(b)) || (b.applied || '').localeCompare(a.applied || '') || a.company.localeCompare(b.company);
       });
   }
 
@@ -143,6 +147,9 @@
 
     var main = el('div', 'cell-main');
     var company = el('div', 'co');
+    if (item.status === 'Interested' && item.rank) {
+      company.append(el('span', 'rank', '#' + item.rank));
+    }
     if (item.url) {
       var link = el('a', '', item.company);
       link.href = item.url;
@@ -150,7 +157,7 @@
       link.rel = 'noopener noreferrer';
       company.append(link);
     } else {
-      company.textContent = item.company;
+      company.append(item.company);
     }
     main.append(company, el('div', 'role', item.role));
     var meta = [item.location, item.pay].filter(Boolean).join(' · ');

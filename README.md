@@ -6,6 +6,7 @@ A small job application tracker that runs on your own computer. It has no accoun
 - See which follow-ups are due
 - Add, edit, delete, search and filter jobs
 - Track pay, location, job link, resume used, contact, next step and notes
+- Give jobs an apply priority, so the ones you haven't applied to yet sort in that order
 
 ## Run it
 
